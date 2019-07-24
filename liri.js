@@ -1,12 +1,16 @@
 require("dotenv").config();
 var keys = require("./keys.js");
+var Bands = require("./bands.js")
 // var spotify = new Spotify(keys.spotify);
+
+var band = new Bands();
 
 var command = process.argv[2];
 var userInput = process.argv.slice(3).join(" ");
 
 if (command === "concert-this"){
     console.log("it went through here")
+    band.getBand(userInput);
 }
 else if(command === "spotify-this-song"){
     console.log("it went through here1")

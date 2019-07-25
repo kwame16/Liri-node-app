@@ -1,7 +1,11 @@
 require("dotenv").config();
 var keys = require("./keys.js");
-var Bands = require("./bands.js")
-// var spotify = new Spotify(keys.spotify);
+var Bands = require("./bands.js");
+var songs = require("./spotify.js");
+var request = require("request");
+var moment = require("moment");
+var fs = require("fs");
+var spotify = new Spotify(keys.spotify);
 
 var band = new Bands();
 

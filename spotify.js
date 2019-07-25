@@ -9,20 +9,34 @@ var request = require("request");
 
 var spotify = new Spotify(keys.spotify);
 
-// var Song = function(){
-    getSpotify = function(song){
+var Spotify = function(key){
+ 
+    this.getSpotify = function(song){
         console.log(song)
-        if (song === undefined){
-            song = "The Sign"
+        if (!song){
+            song = "The Sign Ace of Base"
         }
-        spotify.search({ type: 'track', query: song}, function(err, data) {
+        spotify.search({ type: 'track', query: song}, function(err, response) {
             if (err) {
               return console.log('Error occurred: ' + err);
             }
            
-          console.log(data[0]); 
+        //   console.log(response.tracks.items[0].external_urls.spotify); 
+        //   console.log(response.tracks.items[0].artists[0]);
+
+          var songString =[
+            "Artist: " + response.tracks.items[0].artists[0].name,
+            "Song Title: " + response.tracks.items[0].name,
+            "Preview Link: " + response.tracks.items[0].external_urls.spotify,
+            "Album Title: " + response.tracks.items[0].album.name,
+        ].join("\n\n");
+
+        console.log(songString);
+
           });
     };
-// };
+};
 
-getSpotify("the sign")
+// getSpotify("the sign")
+
+module.exports = Spotify;

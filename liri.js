@@ -2,6 +2,7 @@ require("dotenv").config();
 var keys = require("./keys.js");
 var Bands = require("./bands.js");
 var Spotify = require("./spotify.js");
+var omdb = require("./omdb.js");
 var request = require("request");
 var moment = require("moment");
 var fs = require("fs");
